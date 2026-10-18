@@ -50,14 +50,9 @@ public class Spawner : MonoBehaviour
 
         for (int i = 0; i < totalBlueCoins; i++)
         {
-            float angle = i * (360f / totalBlueCoins);
-            float rad = angle * Mathf.Deg2Rad;
-
-            float x = targetPlayer.position.x + Mathf.Cos(rad) * radius;
-            float z = targetPlayer.position.z + Mathf.Sin(rad) * radius;
-            Vector3 spawnPos = new Vector3(x, 0.5f, z);
-
-            Instantiate(blueCoinPrefab, spawnPos, Quaternion.identity);
+            Vector2 r = Random.insideUnitCircle.normalized;
+            Vector3 pos = player.position + new Vector3(r.x, 0f, r.y) * 3f;
+            Instantiate(blueCoinPrefab, pos, Quaternion.identity);
         }
     }
 }

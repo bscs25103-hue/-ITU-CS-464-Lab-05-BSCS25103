@@ -13,14 +13,14 @@ public class GameManager : MonoBehaviour
     int score;
 
     [Header("Spawner Reference")]
-    [SerializeField] Spawner spawner; // Drag your Spawner here in the Inspector
+    [SerializeField] Spawner spawner;
 
     [Header("Bonus UI & Tracking")]
     [SerializeField] TMP_Text bonusScoreText;
     [SerializeField] int targetBonusCoins = 50;
     int bonusCoinsCollected = 0;
     bool isBonusActive = false;
-    bool redCoinSpawned = false; // Tracks if red coin has already been triggered
+    bool redCoinSpawned = false;
 
     void Awake() => Instance = this;
 
@@ -35,7 +35,6 @@ public class GameManager : MonoBehaviour
         score += amount;
         UpdateUI();
 
-        // Task 1 Check: Spawn Red Coin once score is between 1 and 10 (triggers at score 1)
         if (score >= 1 && score <= 10 && !redCoinSpawned)
         {
             redCoinSpawned = true;
@@ -45,7 +44,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (score >= targetScore && !isBonusActive) Win();
+        if (score >= targetScore) Win();
     }
 
     public void ActivateBonusMode()
