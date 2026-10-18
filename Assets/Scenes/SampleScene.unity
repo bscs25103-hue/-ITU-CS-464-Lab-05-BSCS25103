@@ -780,8 +780,8 @@ MonoBehaviour:
   interval: 1.5
   maxCoins: 5
   area: 5
-  redCoinPrefab: {fileID: 0}
-  blueCoinPrefab: {fileID: 0}
+  redCoinPrefab: {fileID: 8694946564940597572, guid: 2db3fc18822e0564ebd53818aabf6978, type: 3}
+  blueCoinPrefab: {fileID: 8694946564940597572, guid: 4b93dbeceeee79345903e689b19d58a8, type: 3}
   spawnRadius: 5
 --- !u!4 &856987925
 Transform:
@@ -1084,7 +1084,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1159481830
 RectTransform:
   m_ObjectHideFlags: 0
