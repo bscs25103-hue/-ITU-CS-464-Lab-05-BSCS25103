@@ -17,6 +17,6 @@ public class Spawner : MonoBehaviour
         float z = Random.Range(-area, area);
         Vector3 pos = new Vector3(x, 0.5f, z);
         if (Vector3.Distance(pos, player.position) < 2f) return;
-        Instantiate(coinPrefab, pos, Quaternion.identity, transform);
+        Instantiate(coinPrefab, pos, coinPrefab.transform.rotation, transform);
     }
 }
