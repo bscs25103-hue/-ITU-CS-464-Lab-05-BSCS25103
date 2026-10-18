@@ -1,7 +1,9 @@
 using UnityEngine;
 
+public enum CoinType { Normal, Red, Blue }
 public class Coin : MonoBehaviour
 {
+    [SerializeField] CoinType coinType = CoinType.Normal;
     [SerializeField] int value = 1;
     [SerializeField] float spinSpeed = 90f;
 
@@ -9,11 +11,28 @@ public class Coin : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log($"Coin touched by {other.name}");
         if (other.CompareTag("Player"))
         {
-            GameManager.Instance.AddScore(value);
-            Destroy(gameObject);
+            if (coinType == CoinType.Red)
+            {
+                Spawner spawner = FindObjectOfType<Spawner>();
+                if (spawner != null)
+                {
+                    spawner.SpawnBlueCoinsCircle(other.transform);
+                }
+                GameManager.Instance.ActivateBonusMode();
+                Destroy(gameObject);
+            }
+            else if (coinType == CoinType.Blue)
+            {
+                GameManager.Instance.AddBonusScore(value);
+                Destroy(gameObject);
+            }
+            else
+            {
+                GameManager.Instance.AddScore(value);
+                Destroy(gameObject);
+            }
         }
     }
 }
